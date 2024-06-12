@@ -1,12 +1,13 @@
 <template>
   <div class="container">
-    <h1 class="title">Register</h1>
+    <PageTitle>Register</PageTitle>
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
-      <b-form-group
+      <custom-input
         id="input-group-username"
         label-cols-sm="3"
         label="Username:"
         label-for="username"
+        :hasError="$v.form.username.$error"
       >
         <b-form-input
           id="username"
@@ -14,22 +15,20 @@
           type="text"
           :state="validateState('username')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.username.required">
-          Username is required
-        </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-else-if="!$v.form.username.length">
-          Username length should be between 3-8 characters long
-        </b-form-invalid-feedback>
-        <b-form-invalid-feedback v-if="!$v.form.username.alpha">
-          Username alpha
-        </b-form-invalid-feedback>
-      </b-form-group>
 
-      <b-form-group
+        <template v-slot:feedback>
+            <span v-if="!$v.form.username.required">Username is required</span>
+            <span v-else-if="!$v.form.username.length">Username length should be between 3-8 characters long</span>
+            <span v-else-if="!$v.form.username.alpha">Username alpha</span>
+        </template>
+      </custom-input>
+
+      <custom-input
         id="input-group-country"
         label-cols-sm="3"
         label="Country:"
         label-for="country"
+        :hasError="$v.form.country.$error"
       >
         <b-form-select
           id="country"
@@ -37,16 +36,21 @@
           :options="countries"
           :state="validateState('country')"
         ></b-form-select>
-        <b-form-invalid-feedback>
-          Country is required
-        </b-form-invalid-feedback>
-      </b-form-group>
 
-      <b-form-group
+        <template v-slot:feedback>
+          Country is required
+        </template>
+        <!-- <b-form-invalid-feedback>
+          Country is required
+        </b-form-invalid-feedback> -->
+      </custom-input>
+
+      <custom-input
         id="input-group-Password"
         label-cols-sm="3"
         label="Password:"
         label-for="password"
+        :hasError="$v.form.password.$error"
       >
         <b-form-input
           id="password"
@@ -54,25 +58,25 @@
           v-model="$v.form.password.$model"
           :state="validateState('password')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.password.required">
-          Password is required
-        </b-form-invalid-feedback>
-        <b-form-text v-else-if="$v.form.password.$error" text-variant="info">
-          Your password should be <strong>strong</strong>. <br />
-          For that, your password should be also:
-        </b-form-text>
-        <b-form-invalid-feedback
-          v-if="$v.form.password.required && !$v.form.password.length"
-        >
-          Have length between 5-10 characters long
-        </b-form-invalid-feedback>
-      </b-form-group>
 
-      <b-form-group
+        <template v-slot:feedback>
+            <span v-if="!$v.form.password.required">Password is required</span>
+            <span v-else-if="$v.form.password.$error" text-variant="info">
+              Your password should be <strong>strong</strong>. <br />
+              For that, your password should be also:
+            </span>
+            <span v-if="$v.form.password.required && !$v.form.password.length">
+              Have length between 5-10 characters long
+            </span>
+        </template>
+      </custom-input>
+
+      <custom-input
         id="input-group-confirmedPassword"
         label-cols-sm="3"
         label="Confirm Password:"
         label-for="confirmedPassword"
+        :hasError="$v.form.confirmedPassword.$error"
       >
         <b-form-input
           id="confirmedPassword"
@@ -80,15 +84,22 @@
           v-model="$v.form.confirmedPassword.$model"
           :state="validateState('confirmedPassword')"
         ></b-form-input>
-        <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
+
+        <template v-slot:feedback>
+          <span v-if="!$v.form.confirmedPassword.required">Password confirmation is required</span>
+          <span v-else-if="!$v.form.confirmedPassword.sameAsPassword">
+            The confirmed password is not equal to the original password
+          </span>
+        </template>
+        <!-- <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
           Password confirmation is required
-        </b-form-invalid-feedback>
-        <b-form-invalid-feedback
+        </b-form-invalid-feedback> -->
+        <!-- <b-form-invalid-feedback
           v-else-if="!$v.form.confirmedPassword.sameAsPassword"
         >
           The confirmed password is not equal to the original password
-        </b-form-invalid-feedback>
-      </b-form-group>
+        </b-form-invalid-feedback> -->
+      </custom-input>
 
       <b-button type="reset" variant="danger">Reset</b-button>
       <b-button
@@ -121,6 +132,10 @@
 
 <script>
 import countries from "../assets/countries";
+import CustomInput from "../components/CustomInput.vue";
+import PageTitle from "../components/PageTitle.vue";
+import CustomButton from "../components/CustomButton.vue";
+
 import {
   required,
   minLength,
@@ -132,6 +147,11 @@ import {
 import { mockRegister } from "../services/auth.js";
 export default {
   name: "Register",
+  components: {
+    CustomInput,
+    PageTitle,
+    CustomButton
+  },
   data() {
     return {
       form: {
@@ -233,8 +253,11 @@ export default {
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .container {
   max-width: 500px;
 }
 </style>
+
+

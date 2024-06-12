@@ -1,12 +1,11 @@
 <template>
   <div class="container">
-    <h1 class="title">Login</h1>
+    <PageTitle>Login</PageTitle>
     <b-form @submit.prevent="onLogin">
-      <b-form-group
-        id="input-group-Username"
-        label-cols-sm="3"
+      <custom-input
+        id="Username"
         label="Username:"
-        label-for="Username"
+        :hasError="$v.form.username.$error"
       >
         <b-form-input
           id="Username"
@@ -14,16 +13,15 @@
           type="text"
           :state="validateState('username')"
         ></b-form-input>
-        <b-form-invalid-feedback>
+        <template v-slot:feedback>
           Username is required
-        </b-form-invalid-feedback>
-      </b-form-group>
+        </template>
+      </custom-input>
 
-      <b-form-group
-        id="input-group-Password"
-        label-cols-sm="3"
+      <custom-input
+        id="Password"
         label="Password:"
-        label-for="Password"
+        :hasError="$v.form.password.$error"
       >
         <b-form-input
           id="Password"
@@ -31,18 +29,16 @@
           v-model="$v.form.password.$model"
           :state="validateState('password')"
         ></b-form-input>
-        <b-form-invalid-feedback>
+        <template v-slot:feedback>
           Password is required
-        </b-form-invalid-feedback>
-      </b-form-group>
+        </template>
+      </custom-input>
 
-      <b-button
+      <CustomButton
         type="submit"
         variant="primary"
-        style="width:100px;display:block;"
         class="mx-auto w-100"
-        >Login</b-button
-      >
+      >Login</CustomButton>
       <div class="mt-2">
         Do not have an account yet?
         <router-link to="register"> Register in here</router-link>
@@ -57,17 +53,23 @@
     >
       Login failed: {{ form.submitError }}
     </b-alert>
-    <!-- <b-card class="mt-3" header="Form Data Result">
-      <pre class="m-0">{{ form }}</pre>
-    </b-card> -->
   </div>
 </template>
 
 <script>
 import { required } from "vuelidate/lib/validators";
-import {mockLogin} from "../services/auth.js"
+import { mockLogin } from "../services/auth.js";
+import CustomInput from "../components/CustomInput.vue";
+import PageTitle from "../components/PageTitle.vue";
+import CustomButton from "../components/CustomButton.vue";
+
 export default {
   name: "Login",
+  components: {
+    CustomInput,
+    PageTitle,
+    CustomButton
+  },
   data() {
     return {
       form: {
@@ -94,47 +96,28 @@ export default {
     },
     async Login() {
       try {
-        
-        // const response = await this.axios.post(
-        //   this.$root.store.server_domain +"/Login",
-
-
-        //   {
-        //     username: this.form.username,
-        //     password: this.form.password
-        //   }
-        // );
-
         const success = true; // modify this to test the error handling
         const response = mockLogin(this.form.username, this.form.password, success);
-
-        // console.log(response);
-        // this.$root.loggedIn = true;
-        console.log(this.$root.store.login);
         this.$root.store.login(this.form.username);
         this.$router.push("/");
       } catch (err) {
-        console.log(err.response);
         this.form.submitError = err.response.data.message;
       }
     },
-
     onLogin() {
-      // console.log("login method called");
       this.form.submitError = undefined;
       this.$v.form.$touch();
       if (this.$v.form.$anyError) {
         return;
       }
-      // console.log("login method go");
-
       this.Login();
     }
   }
 };
 </script>
+
 <style lang="scss" scoped>
 .container {
-  max-width: 400px;
+  max-width: 500px; 
 }
 </style>
