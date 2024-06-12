@@ -37,7 +37,6 @@
       <CustomButton
         type="submit"
         variant="primary"
-        class="mx-auto w-100"
       >Login</CustomButton>
       <div class="mt-2">
         Do not have an account yet?

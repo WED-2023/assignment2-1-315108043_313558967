@@ -91,24 +91,14 @@
             The confirmed password is not equal to the original password
           </span>
         </template>
-        <!-- <b-form-invalid-feedback v-if="!$v.form.confirmedPassword.required">
-          Password confirmation is required
-        </b-form-invalid-feedback> -->
-        <!-- <b-form-invalid-feedback
-          v-else-if="!$v.form.confirmedPassword.sameAsPassword"
-        >
-          The confirmed password is not equal to the original password
-        </b-form-invalid-feedback> -->
       </custom-input>
-
-      <b-button type="reset" variant="danger">Reset</b-button>
-      <b-button
+      <div class="button-container">
+      <b-button type="reset" variant="danger" class="reset-button">Reset</b-button>
+      <CustomButton
         type="submit"
         variant="primary"
-        style="width:250px;"
-        class="ml-5 w-75"
-        >Register</b-button
-      >
+        >Register</CustomButton>
+      </div>
       <div class="mt-2">
         You have an account already?
         <router-link to="login"> Log in here</router-link>
@@ -258,6 +248,14 @@ export default {
 .container {
   max-width: 500px;
 }
+
+.button-container {
+  display: flex;
+  justify-content: space-between; 
+  align-items: flex-end;
+}
+
+.reset-button {
+  margin-right: 10px;
+}
 </style>
-
-
