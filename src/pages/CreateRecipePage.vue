@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <PageTitle class="title">Search</PageTitle>
+    <PageTitle class="title">Create Recipe</PageTitle>
   </div>
 </template>
 
@@ -8,7 +8,7 @@
 import PageTitle from "../components/PageTitle.vue";
 
 export default {
-name: "Search",
+name: "CreateRecipe",
 components: {
   PageTitle
 }

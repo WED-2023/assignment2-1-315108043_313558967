@@ -3,14 +3,24 @@
     <div id="nav">
       <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
       <router-link :to="{ name: 'search' }">Search</router-link>|
-      {{ !$root.store.username }}
+      <router-link :to="{ name: 'about' }">About</router-link>|
+      <!-- {{ !$root.store.username }} -->
       <span v-if="!$root.store.username">
-        Guest:
+        Hello Guest:
         <router-link :to="{ name: 'register' }">Register</router-link>|
         <router-link :to="{ name: 'login' }">Login</router-link>|
       </span>
       <span v-else>
-        {{ $root.store.username }}: <button @click="Logout">Logout</button>|
+        Welcome back {{ $root.store.username }}: <button @click="Logout">Logout</button>|
+        <div class="dropdown">
+          <button class="dropbtn">My Recipes</button>
+          <div class="dropdown-content">
+            <router-link :to="{ name: 'favoriteRecipes' }">Favorite Recipes</router-link>
+            <router-link :to="{ name: 'myRecipes' }">My Recipes</router-link>
+            <router-link :to="{ name: 'familyRecipes' }">Family Recipes</router-link>
+          </div>
+        </div>|
+        <router-link :to="{ name: 'createRecipe' }">Create Recipe</router-link>
       </span>
     </div>
     <router-view />
@@ -35,6 +45,7 @@ export default {
 
 <style lang="scss">
 @import "@/scss/form-style.scss";
+@import "@/scss/nav_bar_style.scss";
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;

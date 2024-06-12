@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h1 class="title">Main Page</h1>
+    <PageTitle class="title">Main Page</PageTitle>
     <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
     <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
     {{ !$root.store.username }}
@@ -17,15 +17,17 @@
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
     >
       Centeredasdasdad
-    </div>-->
+    </div> -->
   </div>
 </template>
 
 <script>
 import RecipePreviewList from "../components/RecipePreviewList";
+import PageTitle from "../components/PageTitle.vue";
 export default {
   components: {
-    RecipePreviewList
+    RecipePreviewList,
+    PageTitle
   }
 };
 </script>
