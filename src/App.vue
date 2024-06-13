@@ -1,26 +1,31 @@
 <template>
   <div id="app">
     <div id="nav">
-      <router-link :to="{ name: 'main' }">Vue Recipes</router-link>|
-      <router-link :to="{ name: 'search' }">Search</router-link>|
-      <router-link :to="{ name: 'about' }">About</router-link>|
-      <!-- {{ !$root.store.username }} -->
       <span v-if="!$root.store.username">
-        Hello Guest:
-        <router-link :to="{ name: 'register' }">Register</router-link>|
-        <router-link :to="{ name: 'login' }">Login</router-link>|
+        <strong> Hello Guest!</strong>
       </span>
       <span v-else>
-        Welcome back {{ $root.store.username }}: <button @click="Logout">Logout</button>|
+        <strong>Welcome back {{ $root.store.username }}!</strong>
+      </span>
+      <StyledRouterLink :to="{ name: 'main' }">Vue Recipes</StyledRouterLink>|
+      <StyledRouterLink :to="{ name: 'search' }">Search</StyledRouterLink>|
+      <StyledRouterLink :to="{ name: 'about' }">About</StyledRouterLink>|
+      <span v-if="!$root.store.username">
+        <StyledRouterLink :to="{ name: 'register' }">Register</StyledRouterLink>|
+        <StyledRouterLink :to="{ name: 'login' }">Login</StyledRouterLink>|
+      </span>
+      <span v-else>
         <div class="dropdown">
           <button class="dropbtn">My Recipes</button>
           <div class="dropdown-content">
-            <router-link :to="{ name: 'favoriteRecipes' }">Favorite Recipes</router-link>
-            <router-link :to="{ name: 'myRecipes' }">My Recipes</router-link>
-            <router-link :to="{ name: 'familyRecipes' }">Family Recipes</router-link>
+            <StyledRouterLink :to="{ name: 'favoriteRecipes' }">Favorite Recipes</StyledRouterLink>
+            <StyledRouterLink :to="{ name: 'myRecipes' }">My Recipes</StyledRouterLink>
+            <StyledRouterLink :to="{ name: 'familyRecipes' }">Family Recipes</StyledRouterLink>
           </div>
         </div>|
-        <router-link :to="{ name: 'createRecipe' }">Create Recipe</router-link>
+        <StyledRouterLink :to="{ name: 'createRecipe' }">Create Recipe</StyledRouterLink>|
+        
+       <button @click="Logout">Logout</button>
       </span>
     </div>
     <router-view />
@@ -28,8 +33,13 @@
 </template>
 
 <script>
+import StyledRouterLink from './components/StyledRouterLink.vue';
+
 export default {
   name: "App",
+  components: {
+    StyledRouterLink
+  },
   methods: {
     Logout() {
       this.$root.store.logout();

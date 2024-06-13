@@ -13,7 +13,7 @@ export default {
     },
     fontWeight: {
       type: String,
-      default: "bold" // Set default fontWeight to bold
+      default: "bold"
     }
   }
 };
@@ -21,8 +21,8 @@ export default {
 
 <style scoped>
 .title {
-  margin-bottom: 30px; /* Set margin-bottom */
-  font-weight: bold; /* Set font weight */
-  /* Add any additional styles for titles here */
+  margin-bottom: 30px;
+  font-weight: bold;
+  font-size: 50px;
 }
 </style>

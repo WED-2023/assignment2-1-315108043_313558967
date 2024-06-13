@@ -98,9 +98,13 @@ export default {
         const success = true; // modify this to test the error handling
         const response = mockLogin(this.form.username, this.form.password, success);
         this.$root.store.login(this.form.username);
-        this.$router.push("/");
+        this.$router.push("/").catch(err => {
+          if (err.name !== 'NavigationDuplicated') {
+            throw err;
+          }
+        });
       } catch (err) {
-        this.form.submitError = err.response.data.message;
+        this.form.submitError = err.response ? err.response.data.message : 'Login failed';
       }
     },
     onLogin() {

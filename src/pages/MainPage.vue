@@ -1,47 +1,93 @@
 <template>
   <div class="container">
-    <PageTitle class="title">Main Page</PageTitle>
-    <RecipePreviewList title="Randome Recipes" class="RandomRecipes center" />
-    <router-link v-if="!$root.store.username" to="/login" tag="button">You need to Login to vue this</router-link>
-    {{ !$root.store.username }}
-    <RecipePreviewList
-      title="Last Viewed Recipes"
-      :class="{
-        RandomRecipes: true,
-        blur: !$root.store.username,
-        center: true
-      }"
-      disabled
-    ></RecipePreviewList>
+    <!-- <PageTitle class="title">Main Page</PageTitle> -->
+    
+    <PageTitle v-if="$root.store.username">Welcome {{ $root.store.username }}</PageTitle>
+    <PageTitle v-else>Welcome Guest</PageTitle>
+
+    <div class="columns">
+      <!-- Left Column -->
+      <div class="left-column">
+        <RecipePreviewList>Explore these recipes</RecipePreviewList>
+      </div>
+
+      <!-- Right Column -->
+      <div class="right-column">
+        
+        <component 
+          :is="rightColumnComponent" 
+          :title="rightColumnTitle"
+          :class="{'login-border': rightColumnComponent === 'LoginPage'}"
+        />
+
+        <ReasonsToLogin v-if="!$root.store.username" />
+      </div>
     <!-- <div
       style="position: absolute;top: 70%;left: 50%;transform: translate(-50%, -50%);"
     >
       Centeredasdasdad
     </div> -->
   </div>
+</div>
 </template>
 
 <script>
-import RecipePreviewList from "../components/RecipePreviewList";
+import RecipePreviewList from "../components/RecipePreviewList.vue";
 import PageTitle from "../components/PageTitle.vue";
+import LoginPage from "../pages/LoginPage.vue";
+import ReasonsToLogin from "../components/ReasonsToLogin.vue";
+
 export default {
   components: {
     RecipePreviewList,
-    PageTitle
+    PageTitle,
+    LoginPage,
+    ReasonsToLogin // Include ReasonsToLogin component in components list
+  },
+  computed: {
+    rightColumnComponent() {
+      return this.$root.store.username ? 'RecipePreviewList' : 'LoginPage';
+    },
+    rightColumnTitle() {
+      return this.$root.store.username ? 'Last watched recipes' : '';
+    }
   }
 };
 </script>
 
+
 <style lang="scss" scoped>
-.RandomRecipes {
-  margin: 10px 0 10px;
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-.blur {
-  -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
-  filter: blur(2px);
+
+.columns {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
-::v-deep .blur .recipe-preview {
-  pointer-events: none;
-  cursor: default;
+
+.left-column, .right-column {
+  flex: 1;
+  margin: 20px;
+}
+
+.left-column {
+  max-width: 50%;
+}
+
+.right-column {
+  max-width: 50%;
+}
+
+.left-column h2, .right-column h2 {
+  text-align: center;
+}
+
+.login-border {
+  border: 1px solid #ccc;
+  padding: 20px;
 }
 </style>
