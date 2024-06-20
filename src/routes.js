@@ -26,7 +26,7 @@ const routes = [
     component: () => import("./pages/AboutPage"),
   },
   {
-    path: "   ",
+    path: "/recipe/:recipeId",
     name: "recipe",
     component: () => import("./pages/RecipeViewPage"),
   },

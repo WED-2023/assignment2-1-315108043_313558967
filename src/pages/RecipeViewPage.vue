@@ -53,6 +53,8 @@ export default {
     try {
       let response;
       // response = this.$route.params.response;
+      const recipeId = this.$route.params.recipeId;
+      // const response = await mockGetRecipeFullDetails(recipeId);
 
       try {
         // response = await this.axios.get(
@@ -61,11 +63,16 @@ export default {
         //     withCredentials: true
         //   }
         // );
-
-        response = mockGetRecipeFullDetails(this.$route.params.recipeId);
+        // console.log("recipeId = " + recipeId)
+        response = mockGetRecipeFullDetails(recipeId);
 
         // console.log("response.status", response.status);
-        if (response.status !== 200) this.$router.replace("/NotFound");
+        response.status = 200
+        if (response.status !== 200)
+        {
+          this.$router.replace("/NotFound");
+        }
+
       } catch (error) {
         console.log("error.response.status", error.response.status);
         this.$router.replace("/NotFound");

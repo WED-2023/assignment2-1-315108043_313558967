@@ -8,7 +8,9 @@
     <div class="columns">
       <!-- Left Column -->
       <div class="left-column">
-        <RecipePreviewList :fetchFunction="mockGet3RandomeRecipes">Explore these recipes</RecipePreviewList>
+        <RecipePreviewList 
+        :fetchFunction="mockGet3RandomeRecipes">
+        Explore these recipes</RecipePreviewList>
       </div>
 
       <!-- Right Column -->

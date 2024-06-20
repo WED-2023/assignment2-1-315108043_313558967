@@ -6,7 +6,10 @@
     </h3>
     <b-row>
       <b-col v-for="r in recipes" :key="r.id">
-        <RecipePreview class="recipePreview" :recipe="r" />
+        <RecipePreview
+          class="recipePreview"
+          :recipe="r"
+        />
       </b-col>
     </b-row>
   </b-container>
@@ -49,9 +52,9 @@ export default {
         const response = this.fetchFunction();
 
 
-        console.log(response);
+        // console.log(response);
         const recipes = response.data.recipes;
-        console.log(recipes);
+        // console.log(recipes);
         this.recipes = [];
         this.recipes.push(...recipes);
       } catch (error) {
