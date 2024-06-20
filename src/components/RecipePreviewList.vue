@@ -14,7 +14,7 @@
 
 <script>
 import RecipePreview from "./RecipePreview.vue";
-import { mockGetRecipesPreview } from "../services/recipes.js";
+
 export default {
   name: "RecipePreviewList",
   components: {
@@ -23,6 +23,10 @@ export default {
   props: {
     title: {
       type: String,
+      required: false
+    },
+    fetchFunction: {
+      type: Function,
       required: true
     }
   },
@@ -41,8 +45,8 @@ export default {
         //   this.$root.store.server_domain + "/recipes/random",
         // );
 
-        const amountToFetch = 5; // Set this to how many recipes you want to fetch
-        const response = mockGetRecipesPreview(amountToFetch);
+        // const amountToFetch = 5; // sSet this to how many recipes you want to fetch
+        const response = this.fetchFunction();
 
 
         console.log(response);

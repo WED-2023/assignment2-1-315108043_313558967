@@ -8,7 +8,7 @@
     <div class="columns">
       <!-- Left Column -->
       <div class="left-column">
-        <RecipePreviewList>Explore these recipes</RecipePreviewList>
+        <RecipePreviewList :fetchFunction="mockGet3RandomeRecipes">Explore these recipes</RecipePreviewList>
       </div>
 
       <!-- Right Column -->
@@ -17,9 +17,10 @@
         <component 
           :is="rightColumnComponent" 
           :title="rightColumnTitle"
+          :fetchFunction="rightColumnFetchFunction" 
           :class="{'login-border': rightColumnComponent === 'LoginPage'}"
         />
-
+        <!-- <RecipePreview v-if="root.store.username" :fetchFunction="mockGet3LastWatchedRecipes"></RecipePreview> -->
         <ReasonsToLogin v-if="!$root.store.username" />
       </div>
     <!-- <div
@@ -36,17 +37,26 @@ import RecipePreviewList from "../components/RecipePreviewList.vue";
 import PageTitle from "../components/PageTitle.vue";
 import LoginPage from "../pages/LoginPage.vue";
 import ReasonsToLogin from "../components/ReasonsToLogin.vue";
+import { mockGet3RandomeRecipes,mockGet3LastWatchedRecipes } from "../services/recipes.js";
+import RecipePreview from "../components/RecipePreview.vue";
 
 export default {
   components: {
     RecipePreviewList,
     PageTitle,
     LoginPage,
-    ReasonsToLogin // Include ReasonsToLogin component in components list
+    ReasonsToLogin
+  },
+  methods: {
+    mockGet3RandomeRecipes,
+    mockGet3LastWatchedRecipes
   },
   computed: {
     rightColumnComponent() {
       return this.$root.store.username ? 'RecipePreviewList' : 'LoginPage';
+    },
+    rightColumnFetchFunction() {
+      return this.$root.store.username ? this.mockGet3LastWatchedRecipes : null;
     },
     rightColumnTitle() {
       return this.$root.store.username ? 'Last watched recipes' : '';

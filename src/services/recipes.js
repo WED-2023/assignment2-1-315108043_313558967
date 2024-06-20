@@ -14,5 +14,14 @@ export function mockGetRecipesPreview(amount = 1) {
 
 export function mockGetRecipeFullDetails(recipeId) {
     return { data: { recipe: recipe_full_view } } ;
-  }
+}
+
+export function mockGet3RandomeRecipes() {
+  return mockGetRecipesPreview(3);
+}
+
+export function mockGet3LastWatchedRecipes() {
+  return mockGetRecipesPreview(3);
+}
+
   
