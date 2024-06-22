@@ -9,7 +9,7 @@
       img-alt="Image"
       img-top
       tag="article"
-      style="max-width: 20rem;"
+      style="width: 14rem; min-height: 23em;"
       class="mb-2 recipe-card"
     >
       <div class="indicator-container">

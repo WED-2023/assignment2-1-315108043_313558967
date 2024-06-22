@@ -1,10 +1,10 @@
 <template>
   <div id="app">
     <div id="nav">
-      <span v-if="!$root.store.username">
+      <span v-if="!$root.store.username" class="welcomeText">
         <strong> Hello Guest!</strong>
       </span>
-      <span v-else>
+      <span v-else class="welcomeText">
         <strong>Welcome back {{ $root.store.username }}!</strong>
       </span>
       <StyledRouterLink :to="{ name: 'main' }">Vue Recipes</StyledRouterLink>|
@@ -25,7 +25,7 @@
         </div>|
         <StyledRouterLink :to="{ name: 'createRecipe' }">Create Recipe</StyledRouterLink>|
         
-       <button @click="Logout">Logout</button>
+       <button class="logoutBtn" @click="Logout">Logout</button>
       </span>
     </div>
     <router-view />
@@ -34,11 +34,13 @@
 
 <script>
 import StyledRouterLink from './components/StyledRouterLink.vue';
+import CustomButton from "./components/CustomButton.vue";
 
 export default {
   name: "App",
   components: {
-    StyledRouterLink
+    StyledRouterLink,
+    CustomButton
   },
   methods: {
     Logout() {
@@ -54,27 +56,5 @@ export default {
 </script>
 
 <style lang="scss">
-@import "@/scss/form-style.scss";
 @import "@/scss/nav_bar_style.scss";
-
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
-  min-height: 100vh;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
-}
 </style>

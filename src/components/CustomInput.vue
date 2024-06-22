@@ -1,7 +1,7 @@
 <template>
     <div class="custom-input-container">
       <div class="input-field">
-        <label :for="id" class="input-label">{{ label }}</label>
+        <label class="input-label">{{ label }}</label>
         <slot></slot>
       </div>
       <!-- Feedback directly under the input field -->

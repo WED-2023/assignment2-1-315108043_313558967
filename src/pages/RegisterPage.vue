@@ -4,9 +4,7 @@
     <b-form @submit.prevent="onRegister" @reset.prevent="onReset">
       <custom-input
         id="input-group-username"
-        label-cols-sm="3"
         label="Username:"
-        label-for="username"
         :hasError="$v.form.username.$error"
       >
         <b-form-input
@@ -25,9 +23,7 @@
 
       <custom-input
         id="input-group-country"
-        label-cols-sm="3"
         label="Country:"
-        label-for="country"
         :hasError="$v.form.country.$error"
       >
         <b-form-select
@@ -47,9 +43,7 @@
 
       <custom-input
         id="input-group-Password"
-        label-cols-sm="3"
         label="Password:"
-        label-for="password"
         :hasError="$v.form.password.$error"
       >
         <b-form-input
@@ -73,9 +67,7 @@
 
       <custom-input
         id="input-group-confirmedPassword"
-        label-cols-sm="3"
         label="Confirm Password:"
-        label-for="confirmedPassword"
         :hasError="$v.form.confirmedPassword.$error"
       >
         <b-form-input
@@ -94,10 +86,9 @@
       </custom-input>
       <div class="button-container">
       <b-button type="reset" variant="danger" class="reset-button">Reset</b-button>
-      <CustomButton
-        type="submit"
-        variant="primary"
-        >Register</CustomButton>
+      <CustomButton :fullWidth="true" 
+      type="submit"
+      variant="primary"> Register</CustomButton>
       </div>
       <div class="mt-2">
         You have an account already?
@@ -257,5 +248,7 @@ export default {
 
 .reset-button {
   margin-right: 10px;
+  color: white;
+  font-weight: bold;
 }
 </style>

@@ -1,24 +1,41 @@
 <template>
     <b-button
-      type="submit"
-      variant="primary"
-      class="custom-button" 
+      :class="customButtonClass" 
     >
-      <slot>Login</slot>
+      <slot></slot>
     </b-button>
   </template>
   
   <script>
   export default {
-    // Your script section if needed
+    props: {
+      fullWidth: {
+        type: Boolean,
+        default: false
+      }
+    },
+    computed: {
+      customButtonClass() {
+        return {
+          'custom-button': true,
+          'custom-button-extended': this.fullWidth
+        };
+      }
+    }
   };
   </script>
   
-  <style scoped>
+<style scoped>
   .custom-button {
-    width: 100%;
     display: block;
+    color: white;
+    background-color: #154ad0;
+    font-weight: bold;
+  }
+
+  .custom-button-extended {
+    width: 100%;
     margin-top: 20px;
   }
-  </style>
+</style>
   

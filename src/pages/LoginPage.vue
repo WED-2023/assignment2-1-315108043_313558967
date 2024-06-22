@@ -34,10 +34,9 @@
         </template>
       </custom-input>
 
-      <CustomButton
-        type="submit"
-        variant="primary"
-      >Login</CustomButton>
+      <CustomButton :fullWidth="true" 
+      type="submit"
+      variant="primary"> Login </CustomButton>
       <div class="mt-2">
         Do not have an account yet?
         <router-link to="register"> Register in here</router-link>

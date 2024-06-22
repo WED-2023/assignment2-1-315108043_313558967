@@ -44,10 +44,6 @@
       </div>
     </div>
 
-   
-
-
-
     <!-- Filters container -->
     <div class="filters" v-show="showFilters">
       <!-- Cuisine filter -->
@@ -138,15 +134,18 @@
 </template>
 
 <script>
+import { Button } from "bootstrap";
+import CustomButton from "../components/CustomButton.vue";
 import PageTitle from "../components/PageTitle.vue";
 import RecipePreview from "../components/RecipePreview.vue";
-import { mockGetRecipesPreview } from "@/services/recipes"; // Replace with actual service import
+import { mockGetRecipesPreview } from "@/services/recipes";
 
 export default {
   name: "Search",
   components: {
     PageTitle,
     RecipePreview,
+    CustomButton
   },
   data() {
     return {
@@ -296,6 +295,19 @@ export default {
 
 
 <style scoped>
+.btn {
+  display: block;
+  color: white;
+  background-color: #154ad0;
+  font-weight: bold;
+  text-align: center;
+  padding: 5px;
+  white-space: nowrap; 
+  overflow: hidden;
+  text-overflow: ellipsis; 
+  font-size: clamp(10px, 3vw, 15px);
+}
+
 .container {
   display: flex;
   flex-direction: column;
@@ -371,22 +383,26 @@ export default {
 
 .filter-button {
   margin-top: 7px;
-  background-color: #f0f0f0;
-  border: 1px solid #ccc;
+  background-color: #e8eefd;
+  border: 1px solid #103aa2;
   border-radius: 4px;
   padding: 6px 12px;
   cursor: pointer;
+  color: #0c2974;
   transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .filter-button.selected {
   background-color: #007bff;
-  color: #fff;
+  color: #e8eefd;
   border-color: #007bff;
+  font-weight: bold; 
+  border-width: 2px;
 }
 
 .filter-button:hover {
-  background-color: #ccc;
+  font-weight: bold;
+  background-color: #8ba9f3;
 }
 
 .result-info {
