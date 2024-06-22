@@ -1,15 +1,22 @@
-
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   color: #071945;
   min-height: 100vh;
+  padding-top: 80px;
 }
 
 #nav {
-  padding: 30px;
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 1000;
+  height: 100px;
   background-color: #e8eefd;
+  padding-left: 30px;
+  display: flex;
+  align-items: center; 
 }
 
 #nav a {

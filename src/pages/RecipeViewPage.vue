@@ -8,7 +8,7 @@
            <div class="col-md-4">
             <img :src="recipe.image" class="image_center" />
           </div>
-          <div class="col-md-8">
+          <div class="col-md-3">
             <div class="mb-3">
               <div class="indicator-container">
               <img v-if="recipe.vegan" :src="require('@/assets/recipesTypes/vegan.png')" alt="Vegan" class="indicator vegan-indicator" />
@@ -17,9 +17,21 @@
             </div>
               <h3>Ready in {{ recipe.readyInMinutes }} minutes</h3>
               <h3>Likes: {{ recipe.aggregateLikes }} likes</h3>
-              <h3>Servings: {{ recipe.servings }}</h3>
-              <button @click="prepareRecipe" class="btn btn-primary">Prepare the recipe</button>
+              <h3>Servings: {{ servingsCount }}</h3>
+              <!-- <h3>Servings: {{ recipe.servings }}</h3> -->
+              
             </div>
+          </div>
+          <div class="col-md-2">
+            <button @click="prepareRecipe" class="btn btn-primary prepareRecipeBtn">Prepare the recipe</button>
+              <div v-if="checkboxState" class="changeServingsAmountDiv">
+                <button @click="increaseServings" class="btn btn-secondary mt-2 changeServingsAmount"> + </button>
+                <button @click="decreaseServings" class="btn btn-secondary mt-2 changeServingsAmount"> - </button>
+              </div>
+              <select v-model="measureUnit" class="form-select mt-3 measureUnitSelect">
+                <option value="us" selected>US</option>
+                <option value="metric">Metric</option>
+              </select>
           </div>
         </div>
       </div>
@@ -32,7 +44,7 @@
 
                 <!-- :key="`ingredient-${r.id}-${index}`"> -->
                 <!-- :key="index + '_' + r.id"> -->
-                <TextDescription :checkbox="checkboxState"> {{r.original}} </TextDescription>
+                <TextDescription :checkbox="checkboxState"> {{getIngredientText(r)}} </TextDescription>
               </div>
           </div>
           <div class="wrapped">
@@ -71,10 +83,13 @@ export default {
   data() {
     return {
       recipe: null,
-      checkboxState: false
+      checkboxState: false,
+      servingsCount: 0,
+      measureUnit: 'us'
     };
   },
   async created() {
+    
     try {
       let response;
       // response = this.$route.params.response;
@@ -141,6 +156,7 @@ export default {
       };
 
       this.recipe = _recipe;
+      this.servingsCount = this.recipe.servings;
     } catch (error) {
       console.log(error);
     }
@@ -148,41 +164,34 @@ export default {
   methods: {
     prepareRecipe() {
       this.checkboxState = !this.checkboxState;
+      this.servingsCount = this.recipe.servings; // Initialize servingsCount with recipe.servings
+    },
+    increaseServings() {
+      this.servingsCount++;
+      
+    },
+    decreaseServings() {
+      if (this.servingsCount > 1) {
+        this.servingsCount--;
+      }
+    },
+    getAmountByMeasures(r){
+      return r.measures[this.measureUnit].amount;
+    },
+    getUnitByMeasures(r){
+      return r.measures[this.measureUnit].unitLong;
+    },
+    getIngredientText(r) {
+      let currentUnit = this.getUnitByMeasures(r)
+      let originalAmount = this.getAmountByMeasures(r);
+      let originalServings = this.recipe.servings;
+      let currentAmount = (originalAmount / originalServings * this.servingsCount).toFixed(2).replace(/\.?0*$/, '');
+      return `${currentAmount} ${currentUnit} ${r.originalName}`;
     }
   }
 };
 </script>
 
 <style scoped>
-.wrapper {
-  display: flex;
-}
-.wrapped {
-  width: 100%;
-}
-
-.image_center {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  max-width: 300px;
-}
-
-.indicator-container {
-  display: flex;
-  gap: 10px;
-}
-
-
-.indicator {
-  width: 40px;
-  height: 40px;
-}
-
-.recipe-header {
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
+@import "@/scss/recipeViewPage_style.scss";
 </style>
