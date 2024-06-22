@@ -1,6 +1,7 @@
 // src/services/recipes.js
 import recipe_full_view from "../assets/mocks/recipe_full_view.json";
 import recipe_preview from "../assets/mocks/recipe_preview.json";
+import recipe_info from "../assets/mocks/GetRecipeInformation.json";
 
 
 export function mockGetRecipesPreview(amount = 1) {
@@ -13,7 +14,8 @@ export function mockGetRecipesPreview(amount = 1) {
 }
 
 export function mockGetRecipeFullDetails(recipeId) {
-    return { data: { recipe: recipe_full_view } } ;
+    return { data: { recipe: recipe_info } } ;
+    // return { data: { recipe: recipe_full_view } } ;
 }
 
 export function mockGet3RandomeRecipes() {

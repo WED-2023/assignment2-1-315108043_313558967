@@ -1,6 +1,7 @@
 <template>
     <div class="description">
       <div v-if="title" class="title">{{ title }}</div>
+      <input v-if="checkbox" type="checkbox">
       <slot></slot>
     </div>
   </template>
@@ -16,6 +17,10 @@
       color: {
         type: String,
         default: "#333"
+      },
+      checkbox: {
+        type: Boolean,
+        default: false
       }
     }
   };
