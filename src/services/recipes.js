@@ -21,7 +21,32 @@ export function mockGetRecipeFullDetails(recipeId) {
 }
 
 export function mockGet3RandomeRecipes() {
-  return mockGetRecipesPreview(3);
+  // Create a copy of recipe_preview to avoid modifying the original array
+  const recipesCopy = [...recipe_preview];
+
+  // Initialize an array to store the 3 random recipes
+  let randomRecipes = [];
+
+  // Ensure we have at least 3 recipes to choose from
+  if (recipesCopy.length >= 3) {
+    // Generate 3 distinct random indices
+    let indices = [];
+    while (indices.length < 3) {
+      let randomIndex = Math.floor(Math.random() * recipesCopy.length);
+      if (!indices.includes(randomIndex)) {
+        indices.push(randomIndex);
+      }
+    }
+
+    // Get the recipes at the selected indices
+    randomRecipes = indices.map(index => recipesCopy[index]);
+  } else {
+    // If there are less than 3 recipes, return all available recipes
+    randomRecipes = [...recipesCopy];
+  }
+
+  // Return the result in the desired format
+  return { data: { recipes: randomRecipes } };
 }
 
 export function mockGet3LastWatchedRecipes() {

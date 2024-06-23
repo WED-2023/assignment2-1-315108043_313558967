@@ -13,7 +13,7 @@
           @input="suggestLastSearch"
           @keyup.enter="handleSearch"
         />
-        <button @click="handleSearch" class="btn btn-primary">Search</button>
+        <button @click="handleSearch" class="btn btn-primary btnSearch">Search</button>
       </div>
 
       <!-- Search button and sort by dropdown -->
@@ -28,7 +28,7 @@
         </div>
 
         <!-- Toggle filters button -->
-        <button @click="toggleFilters" class="btn btn-secondary">
+        <button @click="toggleFilters" class="btn btn-secondary btnSearch">
           {{ showFilters ? 'Hide Filters' : 'Select Filters' }}
         </button>
 
@@ -411,6 +411,11 @@ export default {
 }
 
 .filter-button:hover {
+  font-weight: bold;
+  background-color: #8ba9f3;
+}
+
+.btnSearch:hover {
   font-weight: bold;
   background-color: #8ba9f3;
 }

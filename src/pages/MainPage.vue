@@ -9,9 +9,11 @@
       <!-- Left Column -->
       <div class="left-column">
         <RecipePreviewList 
+        :key="rerenderKey"
         :fetchFunction="mockGet3RandomeRecipes"
         :familyRecipe="false">
         Explore these recipes</RecipePreviewList>
+        <button @click="randomNewRecipes" class="btnRandom">Random New Recipes</button>
       </div>
 
       <!-- Right Column -->
@@ -51,9 +53,18 @@ export default {
     LoginPage,
     ReasonsToLogin
   },
+  data() {
+    return {
+      rerenderKey: 0  // Add a reactive property to force re-rendering
+    };
+  },
   methods: {
     mockGet3RandomeRecipes,
-    mockGet3LastWatchedRecipes
+    mockGet3LastWatchedRecipes,
+    randomNewRecipes() {
+      mockGet3RandomeRecipes();
+      this.rerenderKey++;
+    }
   },
   computed: {
     rightColumnComponent() {
@@ -106,5 +117,17 @@ export default {
 .login-border {
   border: 1px solid #ccc;
   padding: 20px;
+}
+
+.btnRandom{
+  width: 100%;
+  background-color: #8ba9f3;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.btnRandom:hover{
+  font-size: 1.1em;
+  font-weight: bold;
+  background-color: #8ba9f3;
 }
 </style>
