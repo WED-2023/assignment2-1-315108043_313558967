@@ -1,15 +1,15 @@
 <template>
-  <router-link
-    :to="{ name: 'recipe', params: { recipeId: recipe.id } }"
+   <router-link
+    :to="{ name: 'recipe', params: { familyRecipe: familyRecipe ? 'true' : 'false', recipeId: recipe.id } }"
     class="recipe-preview"
   >
     <b-card
       :title="recipe.title"
-      :img-src="recipe.image"
+      :img-src="computedImageSrc"
       img-alt="Image"
       img-top
       tag="article"
-      style="width: 14rem; min-height: 23em;"
+      :style="computedStyle"
       class="mb-2 recipe-card"
     >
       <div class="indicator-container">
@@ -20,7 +20,9 @@
       <b-card-text>
         <ul class="recipe-overview list-unstyled mb-0">
           <li><strong>Ready in:</strong> {{ recipe.readyInMinutes }} minutes</li>
-          <li><strong>Likes:</strong> {{ recipe.aggregateLikes }}</li>
+          <li v-if="!familyRecipe"><strong>Likes:</strong> {{ recipe.aggregateLikes }}</li>
+          <li v-if="familyRecipe"><strong>Cooked by:</strong> {{ recipe.recipeBy }}</li>
+          <li v-if="familyRecipe"><strong>Family Occasions</strong> {{ recipe.familyOccasions }}</li>
         </ul>
       </b-card-text>
     </b-card>
@@ -34,6 +36,26 @@ export default {
     recipe: {
       type: Object,
       required: true
+    },
+    familyRecipe: {
+      type: Boolean,
+      required: true
+    }
+  },
+  computed: {
+    computedImageSrc() {
+      console.log(this.familyRecipe)
+      if (this.familyRecipe) {
+        return require(`@/assets/family_recipes_images/${this.recipe.imageName}`);
+      } else {
+        return this.recipe.image;
+      }
+    },
+    computedStyle() {
+      return {
+        width: '14rem',
+        minHeight: this.familyRecipe ? '28em' : '23em'
+      };
     }
   }
 };

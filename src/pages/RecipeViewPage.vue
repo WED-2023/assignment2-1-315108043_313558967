@@ -6,7 +6,9 @@
       <div class="row">
            <!-- Recipe Image -->
            <div class="col-md-4">
-            <img :src="recipe.image" class="image_center" />
+            <img :src="computedImageSrc"
+              alt="Recipe Image"
+              class="image_center" />
           </div>
           <div class="col-md-3">
             <div class="mb-3">
@@ -16,10 +18,9 @@
               <img v-if="recipe.glutenFree" :src="require('@/assets/recipesTypes/glutenFree.png')" alt="Gluten-Free" class="indicator gluten-free-indicator" />
             </div>
               <h3>Ready in {{ recipe.readyInMinutes }} minutes</h3>
-              <h3>Likes: {{ recipe.aggregateLikes }} likes</h3>
+              <h3 v-if="!familyRecipe">Likes: {{ recipe.aggregateLikes }} likes</h3>
+              <h3 v-else>Recipe was cooked by: {{ recipe.recipeBy }}</h3>
               <h3>Servings: {{ servingsCount }}</h3>
-              <!-- <h3>Servings: {{ recipe.servings }}</h3> -->
-              
             </div>
           </div>
           <div class="col-md-2">
@@ -36,6 +37,20 @@
         </div>
       </div>
       <div class="recipe-body">
+        <TextDescription v-if="familyRecipe">Family Occasions: {{ recipe.familyOccasions }}</TextDescription>
+        <div v-if="familyRecipe" class="row mt-4">
+          <div class="col">
+            <h3>Preparation Images</h3>
+            <div class="preparation-images">
+              <img v-for="(imageName, index) in recipe.preparationImagesNames"
+                  :key="`preparation-image-${index}`"
+                  :src="require(`@/assets/preparation_images/${imageName}`)"
+                  alt="Preparation Image"
+                  class="preparation-image"
+              />
+            </div>
+          </div>
+        </div>
         <div class="wrapper">
           <div class="wrapped">
             <h3> Ingredients </h3>
@@ -68,7 +83,7 @@
 </template>
 
 <script>
-import { mockGetRecipeFullDetails } from "../services/recipes.js";
+import { mockGetRecipeFullDetails, mockGetFamilyRecipeFullDetails } from "../services/recipes.js";
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-vue/dist/bootstrap-vue.css';
 import { BFormCheckbox } from 'bootstrap-vue';
@@ -89,7 +104,6 @@ export default {
     };
   },
   async created() {
-    
     try {
       let response;
       // response = this.$route.params.response;
@@ -104,7 +118,14 @@ export default {
         //   }
         // );
         // console.log("recipeId = " + recipeId)
-        response = mockGetRecipeFullDetails(recipeId);
+
+        if(this.familyRecipe){
+          // its a family recipe
+          response = mockGetFamilyRecipeFullDetails(recipeId)
+        }
+        else{
+          response = mockGetRecipeFullDetails(recipeId);
+        }
 
         // console.log("response.status", response.status);
         response.status = 200
@@ -130,7 +151,10 @@ export default {
         servings,
         vegan,
         vegetarian,
-        glutenFree
+        glutenFree,
+        recipeBy,
+        familyOccasions,
+        preparationImagesNames
       } = response.data.recipe;
 
       let _instructions = analyzedInstructions
@@ -152,7 +176,10 @@ export default {
         servings,
         vegan,
         vegetarian,
-        glutenFree
+        glutenFree,
+        recipeBy,
+        familyOccasions,
+        preparationImagesNames 
       };
 
       this.recipe = _recipe;
@@ -164,7 +191,7 @@ export default {
   methods: {
     prepareRecipe() {
       this.checkboxState = !this.checkboxState;
-      this.servingsCount = this.recipe.servings; // Initialize servingsCount with recipe.servings
+      this.servingsCount = this.recipe.servings;
     },
     increaseServings() {
       this.servingsCount++;
@@ -187,6 +214,23 @@ export default {
       let originalServings = this.recipe.servings;
       let currentAmount = (originalAmount / originalServings * this.servingsCount).toFixed(2).replace(/\.?0*$/, '');
       return `${currentAmount} ${currentUnit} ${r.originalName}`;
+    }
+  },
+  computed: {
+    familyRecipe: {
+      get() {
+        return this.$route.params.familyRecipe === 'true'; // Convert to boolean if necessary
+      },
+      // No setter needed for read-only computed property
+    },
+    computedImageSrc() {
+      if (this.familyRecipe && this.recipe && this.recipe.image) {
+        return require(`@/assets/family_recipes_images/${this.recipe.image}`);
+      } else if (this.recipe && this.recipe.image) {
+        return this.recipe.image;
+      } else {
+        return ''; // Handle case where recipe or image is not available
+      }
     }
   }
 };

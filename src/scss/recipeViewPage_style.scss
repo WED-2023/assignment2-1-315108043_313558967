@@ -61,3 +61,18 @@
     font-weight: bold;
     background-color: #8ba9f3;
   }
+
+  .preparation-images {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .preparation-image {
+    max-height: 150px; /* Adjust according to your design */
+    height: auto;
+  }
+  

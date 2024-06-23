@@ -2,23 +2,24 @@
     <div class="container">
       <PageTitle class="title">Family Recipes</PageTitle>
       <!-- <div> -->
-        <FamilyRecipePreviewList 
-        :fetchFunction="mockGetFamilyRecipes">
-        Explore these recipes</FamilyRecipePreviewList>
+        <RecipePreviewList 
+        :fetchFunction="mockGetFamilyRecipes"
+        :familyRecipe="true">
+        Explore these recipes</RecipePreviewList>
       <!-- </div> -->
     </div>
 </template>
 
 <script>
 import PageTitle from "../components/PageTitle.vue";
-import FamilyRecipePreviewList from "../components/FamilyRecipePreviewList.vue";
+import RecipePreviewList from "../components/RecipePreviewList.vue";
 import { mockGetFamilyRecipes} from "../services/recipes.js";
 
 export default {
   name: "FamilyRecipes",
   components: {
     PageTitle,
-    FamilyRecipePreviewList
+    RecipePreviewList
   },
   methods: {
     mockGetFamilyRecipes

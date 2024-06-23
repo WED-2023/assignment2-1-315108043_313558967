@@ -1,7 +1,6 @@
 {
     "vegetarian": true,
     "vegan": false,
-    "imageName": "Kurtosh.jpg",
     "preparationImagesNames": ["id_612345_stage1.jpg", "id_612345_stage2.jpg", "id_612345_stage3.jpg", "id_612345_stage4.jpg"],
     "glutenFree": false,
     "dairyFree": true,
@@ -278,7 +277,7 @@
     "readyInMinutes": 120,
     "servings": 4,
     "sourceUrl": "https://www.carine.co.il/foody_recipe/%D7%A7%D7%95%D7%A8%D7%98%D7%95%D7%A9-%D7%A7%D7%95%D7%9C%D7%90%D7%A5-%D7%A7%D7%99%D7%95%D7%A8%D7%98%D7%95%D7%A9-%D7%AA%D7%95%D7%A6%D7%A8%D7%AA-%D7%91%D7%99%D7%AA/",
-    "image": "https://www.carine.co.il/wp-content/uploads/2021/05/Kurtosh.jpg",
+    "image": "Kurtosh.jpg",
     "imageType": "jpeg",
     "summary": "Kurtosh Kolache, a traditional Hungarian pastry, is a delightful treat that everyone should try. One serving contains <b>400 calories</b>, <b>6g of protein</b>, and <b>15g of fat</b>. For <b>$2.50 per serving</b>, this recipe <b>covers 10%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A mixture of flour, sugar, yeast, and a handful of other ingredients are all it takes to make this delicious pastry. From preparation to the plate, this recipe takes approximately <b>120 minutes</b>. If you like this recipe, you might also enjoy other traditional Hungarian pastries.",
     "cuisines": ["Hungarian"],

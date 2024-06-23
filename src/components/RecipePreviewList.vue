@@ -9,6 +9,7 @@
         <RecipePreview
           class="recipePreview"
           :recipe="r"
+          :familyRecipe="familyRecipe"
         />
       </b-col>
     </b-row>
@@ -30,6 +31,10 @@ export default {
     },
     fetchFunction: {
       type: Function,
+      required: true
+    },
+    familyRecipe: {
+      type: Boolean,
       required: true
     }
   },
