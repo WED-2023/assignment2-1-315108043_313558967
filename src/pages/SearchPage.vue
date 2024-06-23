@@ -18,7 +18,6 @@
 
       <!-- Search button and sort by dropdown -->
       <div class="search-controls">
-        
         <div class="sort-by-container">
           <label for="sortBy" class="sort-by-label">Sort By:</label>
           <select v-model="sortBy" id="sortBy" class="sort-by-select" @change="handleSort">
@@ -27,20 +26,21 @@
             <option value="preparationTime">Preparation Time</option>
           </select>
         </div>
-        
-            <!-- Toggle filters button -->
-    <button @click="toggleFilters" class="btn btn-secondary">
-      {{ showFilters ? 'Hide Filters' : 'Select Filters' }}
-    </button>
-         <!-- Max results dropdown -->
-    <div class="max-results-container">
-      <label for="maxResults">Max Results to Show:</label>
-      <select v-model="maxResultsToShow" id="maxResults" class="form-control">
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-      </select>
-    </div>
+
+        <!-- Toggle filters button -->
+        <button @click="toggleFilters" class="btn btn-secondary">
+          {{ showFilters ? 'Hide Filters' : 'Select Filters' }}
+        </button>
+
+        <!-- Max results dropdown -->
+        <div class="max-results-container">
+          <label for="maxResults">Max Results to Show:</label>
+          <select v-model="maxResultsToShow" id="maxResults" class="form-control">
+            <option value="5">5</option>
+            <option value="10">10</option>
+            <option value="15">15</option>
+          </select>
+        </div>
       </div>
     </div>
 
@@ -62,7 +62,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Diet filter -->
       <div class="filter-column">
         <div class="filter">
@@ -79,7 +79,7 @@
           </div>
         </div>
       </div>
-      
+
       <!-- Intolerance filter -->
       <div class="filter-column">
         <div class="filter">
@@ -114,20 +114,28 @@
     </div>
 
     <!-- Search results container -->
-    <div class="search-results-container" v-if="searchResults.length > 0">
-      <div class="search-results-title">
+    <div class="search-results-container">
+      <div class="search-results-title" v-if="searchResults.length > 0">
         <h2>Search Results</h2>
       </div>
-      <div class="search-results">
-        <!-- Recipe previews -->
-        <div class="recipe-preview-container">
-          <RecipePreview
-            v-for="(recipe, index) in limitedSortedSearchResults"
-            :key="recipe.id" 
-            :recipe="recipe"
-            class="recipe-preview"
-          />
-        </div>
+
+      <!-- No items found message
+      <div class="no-results-message" v-if="searchResults.length === 0">
+        <h2>No items found</h2>
+      </div> -->
+
+      <!-- No items found message -->
+      <div class="no-results-message" v-if="searchPerformed && searchResults.length === 0">
+        <h2>No items found</h2>
+      </div>
+      <!-- Recipe previews -->
+      <div class="recipe-preview-container">
+        <RecipePreview
+          v-for="(recipe, index) in limitedSortedSearchResults"
+          :key="recipe.id"
+          :recipe="recipe"
+          class="recipe-preview"
+        />
       </div>
     </div>
   </div>
@@ -161,6 +169,7 @@ export default {
       cuisines: ["Italian", "Chinese", "Indian", "French", "Mexican"], // Example cuisines
       diets: ["Vegetarian", "Vegan", "Gluten-Free", "Keto", "Paleo"], // Example diets
       intolerances: ["Dairy", "Egg", "Gluten", "Peanut", "Shellfish"], // Example intolerances
+      searchPerformed: false, // Indicates whether a search has been performed
     };
   },
   created() {
@@ -169,8 +178,8 @@ export default {
   },
   computed: {
     limitedSortedSearchResults() {
-    return this.sortedSearchResults.slice(0, this.maxResultsToShow);
-  },
+      return this.sortedSearchResults.slice(0, this.maxResultsToShow);
+    },
     selectedFilters() {
       // Computed property to gather selected filters
       let filters = [];
@@ -182,52 +191,55 @@ export default {
       return filters;
     },
     sortedSearchResults() {
-    // Computed property to return searchResults sorted based on sortBy criteria
-    if (this.sortBy === "popularity") {
-      return this.searchResults
-        .slice()
-        .sort((a, b) => b.aggregateLikes - a.aggregateLikes);
-    } else if (this.sortBy === "preparationTime") {
-      return this.searchResults
-        .slice()
-        .sort((a, b) => a.readyInMinutes - b.readyInMinutes);
-    } else {
-      // Default case (should not happen)
-      return this.searchResults;
-    }
-  },
+      // Computed property to return searchResults sorted based on sortBy criteria
+      if (this.sortBy === "popularity") {
+        return this.searchResults
+          .slice()
+          .sort((a, b) => b.aggregateLikes - a.aggregateLikes);
+      } else if (this.sortBy === "preparationTime") {
+        return this.searchResults
+          .slice()
+          .sort((a, b) => a.readyInMinutes - b.readyInMinutes);
+      } else {
+        // Default case (should not happen)
+        return this.searchResults;
+      }
+    },
   },
   methods: {
     handleSearch() {
-      // Check if the search query is empty
-      if (!this.searchQuery.trim()) {
-        // If the search query is empty, clear the search results and return early
-        this.searchResults = [];
-        return;
-      }
+    // Set searchPerformed to true when the search is initiated
+    this.searchPerformed = true;
 
-      // Perform search functionality here using this.searchQuery and filters
-      console.log("Search query:", this.searchQuery);
-      console.log("Selected Cuisines:", this.selectedCuisines);
-      console.log("Selected Diets:", this.selectedDiets);
-      console.log("Selected Intolerances:", this.selectedIntolerances);
+    // Check if the search query is empty and there are no selected filters
+    if (!this.searchQuery.trim() && this.selectedFilters.length === 0) {
+      // If both search query and filters are empty, clear the search results and return early
+      this.searchResults = [];
+      return;
+    }
 
-      // Store the last search query in localStorage
-      localStorage.setItem("lastSearch", this.searchQuery);
+    // Perform search functionality here using this.searchQuery and filters
+    console.log("Search query:", this.searchQuery);
+    console.log("Selected Cuisines:", this.selectedCuisines);
+    console.log("Selected Diets:", this.selectedDiets);
+    console.log("Selected Intolerances:", this.selectedIntolerances);
 
-      // Update lastSearch to reflect the current search query
-      this.lastSearch = this.searchQuery;
+    // Store the last search query in localStorage
+    localStorage.setItem("lastSearch", this.searchQuery);
 
-      // Clear the search input after search
-      this.searchQuery = "";
+    // Update lastSearch to reflect the current search query
+    this.lastSearch = this.searchQuery;
 
-      // Mocked data for demonstration (replace with actual search logic)
-      const { data: { recipes } } = mockGetRecipesPreview(11);
-      this.searchResults = recipes; // Replace with actual search results
+    // Clear the search input after search
+    this.searchQuery = "";
 
-      // Scroll to the top of the results container after displaying results
-      this.scrollToTop();
-    },
+    // Mocked data for demonstration (replace with actual search logic)
+    const { data: { recipes } } = mockGetRecipesPreview(11);
+    this.searchResults = recipes; // Replace with actual search results
+
+    // Scroll to the top of the results container after displaying results
+    this.scrollToTop();
+  },
     suggestLastSearch() {
       // Suggest the last search value as the user types
       if (this.$root.store.username) {
@@ -291,8 +303,6 @@ export default {
   },
 };
 </script>
-
-
 
 <style scoped>
 .btn {
@@ -436,6 +446,11 @@ export default {
   margin-top: 5px;
 }
 
+.no-results-message {
+  text-align: center; /* Center the text */
+  margin: 20px 0; /* Add some margin for spacing */
+}
+
 .recipe-preview-container {
   display: flex;
   flex-wrap: wrap;
@@ -491,6 +506,3 @@ export default {
   border-color: #007bff;
 }
 </style>
-
-
-
