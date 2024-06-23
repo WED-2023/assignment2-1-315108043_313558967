@@ -28,6 +28,14 @@ export function mockGet3LastWatchedRecipes() {
   return mockGetRecipesPreview(3);
 }
 
+export function mockGet5FavoritesRecipes(){
+  return mockGetRecipesPreview(5)
+}
+
+export function mockGet4MyRecipes(){
+  return mockGetRecipesPreview(4)
+}
+
 export function mockGetFamilyRecipes() {
   let recipes = [];
   console.log(family_recipe_preview.length)
