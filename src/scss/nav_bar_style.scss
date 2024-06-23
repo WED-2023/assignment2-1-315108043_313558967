@@ -103,3 +103,25 @@
   font-size: 1.1em;
   padding: 7px 15px; 
 }
+
+.createRecipeBtn{
+  // color: white;
+  // background-color: #154ad0;
+  // font-weight: bold;
+  // margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: #e8eefd;
+  border: 1px solid #103aa2;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #0c2974;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.createRecipeBtn:hover {
+  font-weight: bold;
+  background-color: #8ba9f3;
+}
+

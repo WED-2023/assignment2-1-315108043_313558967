@@ -40,5 +40,10 @@
     "webpack": "^5.92.0",
     "webpack-cli": "^5.1.4",
     "webpack-dev-middleware": "^7.2.1"
-  }
+  },
+  "main": ".eslintrc.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

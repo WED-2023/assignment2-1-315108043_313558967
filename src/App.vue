@@ -23,8 +23,11 @@
             <StyledRouterLink :to="{ name: 'familyRecipes' }">Family Recipes</StyledRouterLink>
           </div>
         </div>|
-        <StyledRouterLink :to="{ name: 'createRecipe' }">Create Recipe</StyledRouterLink>|
-        
+        <!-- <StyledRouterLink :to="{ name: 'createRecipe' }">Create Recipe</StyledRouterLink>| -->
+        <CreateRecipe :show="showCreateRecipe" @close="showCreateRecipe = false" />
+        <button class="createRecipeBtn" @click="showCreateRecipe = true">
+          Create New Recipe
+      </button>|
        <button class="logoutBtn" @click="Logout">Logout</button>
       </span>
     </div>
@@ -33,14 +36,23 @@
 </template>
 
 <script>
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
 import StyledRouterLink from './components/StyledRouterLink.vue';
 import CustomButton from "./components/CustomButton.vue";
+import CreateRecipe from "./components/CreateRecipe.vue";
 
 export default {
   name: "App",
   components: {
     StyledRouterLink,
-    CustomButton
+    CustomButton,
+    CreateRecipe
+  },
+  data() {
+    return {
+      showCreateRecipe: false
+    };
   },
   methods: {
     Logout() {
