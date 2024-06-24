@@ -26,23 +26,23 @@
         </ul>
       </b-card-text>
       <div class="bottom-indicators">
+        
         <img v-if="hasUserSeenRecipe(recipe.id)" :src="require('@/assets/seen.png')" alt="Seen" class="indicator seen-indicator" />
-        <img
-          :src="isFavorite ? require('@/assets/favorite.png') : require('@/assets/not_favorite.png')"
-          alt="Favorite"
-          class="indicator favorite-indicator"
-          @click.stop.prevent="toggleFavorite"
-        />
+        <FavoriteIcon :recipeId="recipe.id" />
       </div>
     </b-card>
   </router-link>
 </template>
 
 <script>
-import { mockHasUserSeenRecipe, mockIsFavoriteRecipe, mockAddFavorite, mockRemoveFavorite } from "../services/user";
+import FavoriteIcon from "./FavoriteIcon";
+import { mockHasUserSeenRecipe } from "../services/user";
 
 export default {
   name: "recipePreview",
+  components: {
+    FavoriteIcon
+  },
   props: {
     recipe: {
       type: Object,
@@ -52,11 +52,6 @@ export default {
       type: Boolean,
       required: true
     }
-  },
-  data() {
-    return {
-      isFavorite: mockIsFavoriteRecipe(this.recipe.id)
-    };
   },
   computed: {
     computedImageSrc() {
@@ -79,22 +74,6 @@ export default {
       const result = mockHasUserSeenRecipe(recipeId);
       console.log(`Checking if user has seen recipe ${recipeId}: ${result}`);
       return result;
-    },
-    toggleFavorite(event) {
-      event.preventDefault();
-      if (this.isFavorite) {
-        const response = mockRemoveFavorite(this.recipe.id);
-        if (response.status === 200 && response.response.data.success) {
-          this.isFavorite = false;
-          console.log(response.response.data.message);
-        }
-      } else {
-        const response = mockAddFavorite(this.recipe.id);
-        if (response.status === 200 && response.response.data.success) {
-          this.isFavorite = true;
-          console.log(response.response.data.message);
-        }
-      }
     }
   }
 };
@@ -143,10 +122,6 @@ export default {
 .indicator {
   width: 40px;
   height: 40px;
-}
-
-.favorite-indicator {
-  cursor: pointer;
 }
 
 .seen-indicator {
