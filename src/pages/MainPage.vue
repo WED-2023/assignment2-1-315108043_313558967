@@ -10,8 +10,7 @@
       <div class="left-column">
         <RecipePreviewList 
         :key="rerenderKey"
-        :fetchFunction="mockGet3RandomeRecipes"
-        :familyRecipe="false">
+        :fetchFunction="mockGet3RandomeRecipes">
         Explore these recipes</RecipePreviewList>
         <button @click="randomNewRecipes" class="btnRandom">Random New Recipes</button>
       </div>
@@ -23,7 +22,6 @@
           :is="rightColumnComponent" 
           :title="rightColumnTitle"
           :fetchFunction="rightColumnFetchFunction" 
-          :familyRecipe="rightColumnFamilyRecipe"
           :class="{'login-border': rightColumnComponent === 'LoginPage'}"
         />
         <!-- <RecipePreview v-if="root.store.username" :fetchFunction="mockGet3LastWatchedRecipes"></RecipePreview> -->
@@ -72,9 +70,6 @@ export default {
     },
     rightColumnFetchFunction() {
       return this.$root.store.username ? this.mockGet3LastWatchedRecipes : null;
-    },
-    rightColumnFamilyRecipe(){
-      return this.$root.store.username ? false : null;
     },
     rightColumnTitle() {
       return this.$root.store.username ? 'Last watched recipes' : '';

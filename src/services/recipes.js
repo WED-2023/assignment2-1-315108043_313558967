@@ -63,7 +63,6 @@ export function mockGet4MyRecipes(){
 
 export function mockGetFamilyRecipes() {
   let recipes = [];
-  console.log(family_recipe_preview.length)
   for(let i = 0; i < family_recipe_preview.length; i++){
     recipes.push(family_recipe_preview[i]);
   }

@@ -55,7 +55,6 @@ export default {
   },
   computed: {
     computedImageSrc() {
-      console.log(this.familyRecipe);
       if (this.familyRecipe) {
         return require(`@/assets/family_recipes_images/${this.recipe.imageName}`);
       } else {
@@ -72,7 +71,7 @@ export default {
   methods: {
     hasUserSeenRecipe(recipeId) {
       const result = mockHasUserSeenRecipe(recipeId);
-      console.log(`Checking if user has seen recipe ${recipeId}: ${result}`);
+      // console.log(`Checking if user has seen recipe ${recipeId}: ${result}`);
       return result;
     }
   }
