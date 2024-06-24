@@ -1,5 +1,5 @@
 <template>
-   <router-link
+  <router-link
     :to="{ name: 'recipe', params: { familyRecipe: familyRecipe ? 'true' : 'false', recipeId: recipe.id } }"
     class="recipe-preview"
   >
@@ -22,14 +22,25 @@
           <li><strong>Ready in:</strong> {{ recipe.readyInMinutes }} minutes</li>
           <li v-if="!familyRecipe"><strong>Likes:</strong> {{ recipe.aggregateLikes }}</li>
           <li v-if="familyRecipe"><strong>Cooked by:</strong> {{ recipe.recipeBy }}</li>
-          <li v-if="familyRecipe"><strong>Family Occasions</strong> {{ recipe.familyOccasions }}</li>
+          <li v-if="familyRecipe"><strong>Family Occasions:</strong> {{ recipe.familyOccasions }}</li>
         </ul>
       </b-card-text>
+      <div class="bottom-indicators">
+        <img v-if="hasUserSeenRecipe(recipe.id)" :src="require('@/assets/seen.png')" alt="Seen" class="indicator seen-indicator" />
+        <img
+          :src="isFavorite ? require('@/assets/favorite.png') : require('@/assets/not_favorite.png')"
+          alt="Favorite"
+          class="indicator favorite-indicator"
+          @click.stop.prevent="toggleFavorite"
+        />
+      </div>
     </b-card>
   </router-link>
 </template>
 
 <script>
+import { mockHasUserSeenRecipe, mockIsFavoriteRecipe, mockAddFavorite, mockRemoveFavorite } from "../services/user";
+
 export default {
   name: "recipePreview",
   props: {
@@ -42,9 +53,14 @@ export default {
       required: true
     }
   },
+  data() {
+    return {
+      isFavorite: mockIsFavoriteRecipe(this.recipe.id)
+    };
+  },
   computed: {
     computedImageSrc() {
-      console.log(this.familyRecipe)
+      console.log(this.familyRecipe);
       if (this.familyRecipe) {
         return require(`@/assets/family_recipes_images/${this.recipe.imageName}`);
       } else {
@@ -57,6 +73,29 @@ export default {
         minHeight: this.familyRecipe ? '28em' : '23em'
       };
     }
+  },
+  methods: {
+    hasUserSeenRecipe(recipeId) {
+      const result = mockHasUserSeenRecipe(recipeId);
+      console.log(`Checking if user has seen recipe ${recipeId}: ${result}`);
+      return result;
+    },
+    toggleFavorite(event) {
+      event.preventDefault();
+      if (this.isFavorite) {
+        const response = mockRemoveFavorite(this.recipe.id);
+        if (response.status === 200 && response.response.data.success) {
+          this.isFavorite = false;
+          console.log(response.response.data.message);
+        }
+      } else {
+        const response = mockAddFavorite(this.recipe.id);
+        if (response.status === 200 && response.response.data.success) {
+          this.isFavorite = true;
+          console.log(response.response.data.message);
+        }
+      }
+    }
   }
 };
 </script>
@@ -65,6 +104,7 @@ export default {
 .recipe-preview {
   text-decoration: none;
   color: inherit;
+  position: relative; /* Ensures absolutely positioned elements are relative to this container */
 }
 
 .recipe-card:hover {
@@ -90,9 +130,27 @@ export default {
   gap: 5px;
 }
 
+.bottom-indicators {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-items: center;
+}
+
 .indicator {
   width: 40px;
   height: 40px;
 }
 
+.favorite-indicator {
+  cursor: pointer;
+}
+
+.seen-indicator {
+  width: 40px;
+  height: 40px;
+}
 </style>

@@ -84,6 +84,7 @@
 </template>
 
 <script>
+import {mockHasUserSeenRecipe} from "../services/user";
 export default {
   name: 'CreateRecipe',
   props: {
