@@ -33,6 +33,8 @@
                 <option value="us" selected>US</option>
                 <option value="metric">Metric</option>
               </select>
+              <br>
+              <FavoriteIcon :recipeId="recipe.id" class="FavoriteIcon"/>
           </div>
         </div>
       </div>
@@ -89,11 +91,13 @@ import 'bootstrap-vue/dist/bootstrap-vue.css';
 import { BFormCheckbox } from 'bootstrap-vue';
 import TextDescription from "../components/TextDescription.vue";
 import PageTitle from "../components/PageTitle.vue";
+import FavoriteIcon from "../components/FavoriteIcon";
 
 export default {
   components: {
       TextDescription,
-      PageTitle
+      PageTitle,
+      FavoriteIcon
   },
   data() {
     return {
