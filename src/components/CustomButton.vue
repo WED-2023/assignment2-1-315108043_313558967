@@ -33,9 +33,15 @@
     font-weight: bold;
   }
 
+
   .custom-button-extended {
     width: 100%;
     margin-top: 20px;
+  }
+
+  .custom-button:hover{
+    font-weight: bold;
+    background-color: #8ba9f3;
   }
 </style>
   
