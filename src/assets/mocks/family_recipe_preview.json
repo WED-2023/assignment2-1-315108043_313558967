@@ -1,0 +1,51 @@
+[
+  {
+    "id": 612345,
+    "imageName": "Kurtosh.jpg",
+    "title": "Kurtosh Kolache",
+    "readyInMinutes": 120,
+    "vegetarian": true,
+    "vegan": false,
+    "glutenFree": false,
+    "summary": "Kurtosh Kolache, a traditional Hungarian pastry, is a delightful treat that everyone should try. One serving contains <b>400 calories</b>, <b>6g of protein</b>, and <b>15g of fat</b>. For <b>$2.50 per serving</b>, this recipe <b>covers 10%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A mixture of flour, sugar, yeast, and a handful of other ingredients are all it takes to make this delicious pastry. From preparation to the plate, this recipe takes approximately <b>120 minutes</b>. If you like this recipe, you might also enjoy other traditional Hungarian pastries.",
+    "recipeBy": "Yael",
+    "familyOccasions": "The recipe was prepared to be given to the soldiers at the beginning of the war."
+  },
+  {
+    "id": 673923,
+    "imageName": "mousseCake.jpg",
+    "title": "Mousse Cake",
+    "readyInMinutes": 30,
+    "vegetarian": true,
+    "vegan": false,
+    "glutenFree": true,
+    "summary": "Mousse Cake is a delightful dessert that combines layers of airy mousse with a light cake base. It's perfect for any occasion, offering a rich and creamy texture that melts in your mouth. This recipe serves 4 and can be prepared in approximately 30 minutes.",
+    "recipeBy": "Yael",
+    "familyOccasions": "Birthdays"
+  },
+  {
+    "id": 563456,
+    "imageName": "pizza.jpg",
+    "title": "Pizza Margherita",
+    "readyInMinutes": 180,
+    "vegetarian": true,
+    "vegan": false,
+    "glutenFree": false,
+    "summary": "Pizza Margherita is a classic Italian dish known for its simplicity and delicious flavors. Topped with fresh tomatoes, mozzarella cheese, and basil leaves on a thin crust, it offers a perfect balance of savory and fresh tastes. This recipe serves 2-4 people and takes approximately 45 minutes to prepare, making it an ideal choice for a cozy dinner or gathering with friends.",
+    "recipeBy": "Yael",
+    "familyOccasions": "Birthdays"
+  },
+  {
+    "id": 789012,
+    "imageName": "challah.jpg",
+    "title": "Challah Bread",
+    "readyInMinutes": 180,
+    "vegetarian": true,
+    "vegan": false,
+    "glutenFree": false,
+    "summary": "Challah Bread is a braided loaf enriched with eggs and honey, giving it a soft texture and slightly sweet flavor. It holds significant cultural importance in Jewish traditions, often served during Sabbath and holidays. This recipe yields one large loaf and requires approximately 3 hours to prepare and bake.",
+    "recipeBy": "Reut, Ravit, Yael",
+    "familyOccasions": "Every Friday"
+  }
+]
+   

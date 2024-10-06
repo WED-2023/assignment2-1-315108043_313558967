@@ -1,0 +1,459 @@
+{
+    "vegetarian": true,
+    "vegan": false,
+    "preparationImagesNames": ["id_612345_stage1.jpg", "id_612345_stage2.jpg", "id_612345_stage3.jpg", "id_612345_stage4.jpg"],
+    "glutenFree": false,
+    "dairyFree": true,
+    "veryHealthy": false,
+    "cheap": false,
+    "veryPopular": false,
+    "sustainable": false,
+    "lowFodmap": false,
+    "weightWatcherSmartPoints": 12,
+    "gaps": "no",
+    "recipeBy": "Yael",
+    "familyOccasions": "The recipe was prepared to be given to the soldiers at the beginning of the war.",
+    "preparationMinutes": 120,
+    "cookingMinutes": 20,
+    "aggregateLikes": 0,
+    "healthScore": 4,
+    "creditsText": "Yael",
+    "sourceName": "Carine",
+    "pricePerServing": 2.50,
+    "extendedIngredients": [
+        {
+            "id": 20081,
+            "aisle": "Baking",
+            "image": "flour.png",
+            "consistency": "SOLID",
+            "name": "white flour",
+            "nameClean": "white flour",
+            "original": "1/2 kg white flour",
+            "originalName": "white flour",
+            "amount": 0.5,
+            "unit": "kg",
+            "meta": ["white"],
+            "measures": {
+                "us": {
+                    "amount": 1.102,
+                    "unitShort": "lbs",
+                    "unitLong": "pounds"
+                },
+                "metric": {
+                    "amount": 500,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 18375,
+            "aisle": "Baking",
+            "image": "yeast-granules.jpg",
+            "consistency": "SOLID",
+            "name": "yeast",
+            "nameClean": "yeast",
+            "original": "25 grams yeast",
+            "originalName": "yeast",
+            "amount": 25,
+            "unit": "g",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.88,
+                    "unitShort": "oz",
+                    "unitLong": "ounces"
+                },
+                "metric": {
+                    "amount": 25,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 18371,
+            "aisle": "Baking",
+            "image": "baking-powder.jpg",
+            "consistency": "SOLID",
+            "name": "baking powder",
+            "nameClean": "baking powder",
+            "original": "1 package baking powder",
+            "originalName": "baking powder",
+            "amount": 1,
+            "unit": "package",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 1,
+                    "unitShort": "pkg",
+                    "unitLong": "package"
+                },
+                "metric": {
+                    "amount": 1,
+                    "unitShort": "pkg",
+                    "unitLong": "package"
+                }
+            }
+        },
+        {
+            "id": 1001,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "butter-sliced.jpg",
+            "consistency": "SOLID",
+            "name": "butter",
+            "nameClean": "butter",
+            "original": "100 grams butter",
+            "originalName": "butter",
+            "amount": 100,
+            "unit": "g",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 3.53,
+                    "unitShort": "oz",
+                    "unitLong": "ounces"
+                },
+                "metric": {
+                    "amount": 100,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 1077,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "milk.png",
+            "consistency": "LIQUID",
+            "name": "milk",
+            "nameClean": "milk",
+            "original": "3/4 cup 3% milk",
+            "originalName": "3% milk",
+            "amount": 0.75,
+            "unit": "cup",
+            "meta": ["3%"],
+            "measures": {
+                "us": {
+                    "amount": 0.75,
+                    "unitShort": "cup",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 180,
+                    "unitShort": "ml",
+                    "unitLong": "milliliters"
+                }
+            }
+        },
+        {
+            "id": 1123,
+            "aisle": "Milk, Eggs, Other Dairy",
+            "image": "egg.jpg",
+            "consistency": "SOLID",
+            "name": "eggs",
+            "nameClean": "eggs",
+            "original": "2 eggs L",
+            "originalName": "eggs",
+            "amount": 2,
+            "unit": "L",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 2,
+                    "unitShort": "",
+                    "unitLong": ""
+                },
+                "metric": {
+                    "amount": 2,
+                    "unitShort": "",
+                    "unitLong": ""
+                }
+            }
+        },
+        {
+            "id": 19335,
+            "aisle": "Baking",
+            "image": "sugar-in-bowl.png",
+            "consistency": "SOLID",
+            "name": "white sugar",
+            "nameClean": "white sugar",
+            "original": "1/4 cup white sugar",
+            "originalName": "white sugar",
+            "amount": 0.25,
+            "unit": "cup",
+            "meta": ["white"],
+            "measures": {
+                "us": {
+                    "amount": 0.25,
+                    "unitShort": "cups",
+                    "unitLong": "cups"
+                },
+                "metric": {
+                    "amount": 50,
+                    "unitShort": "g",
+                    "unitLong": "grams"
+                }
+            }
+        },
+        {
+            "id": 19350,
+            "aisle": "Baking",
+            "image": "sugar.jpg",
+            "consistency": "SOLID",
+            "name": "vanilla sugar",
+            "nameClean": "vanilla sugar",
+            "original": "1 package vanilla sugar",
+            "originalName": "vanilla sugar",
+            "amount": 1,
+            "unit": "package",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 1,
+                    "unitShort": "pkg",
+                    "unitLong": "package"
+                },
+                "metric": {
+                    "amount": 1,
+                    "unitShort": "pkg",
+                    "unitLong": "package"
+                }
+            }
+        },
+        {
+            "id": 2047,
+            "aisle": "Spices and Seasonings",
+            "image": "salt.jpg",
+            "consistency": "SOLID",
+            "name": "fine salt",
+            "nameClean": "fine salt",
+            "original": "1/2 teaspoon fine salt",
+            "originalName": "fine salt",
+            "amount": 0.5,
+            "unit": "teaspoon",
+            "meta": ["fine"],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                },
+                "metric": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                }
+            }
+        },
+        {
+            "id": 9152,
+            "aisle": "Produce",
+            "image": "lemon-zest.jpg",
+            "consistency": "SOLID",
+            "name": "lemon zest",
+            "nameClean": "lemon zest",
+            "original": "1/2 teaspoon lemon zest",
+            "originalName": "lemon zest",
+            "amount": 0.5,
+            "unit": "teaspoon",
+            "meta": [],
+            "measures": {
+                "us": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                },
+                "metric": {
+                    "amount": 0.5,
+                    "unitShort": "tsps",
+                    "unitLong": "teaspoons"
+                }
+            }
+        }
+    ],
+    "id": 612345,
+    "title": "Kurtosh Kolache",
+    "readyInMinutes": 120,
+    "servings": 4,
+    "sourceUrl": "https://www.carine.co.il/foody_recipe/%D7%A7%D7%95%D7%A8%D7%98%D7%95%D7%A9-%D7%A7%D7%95%D7%9C%D7%90%D7%A5-%D7%A7%D7%99%D7%95%D7%A8%D7%98%D7%95%D7%A9-%D7%AA%D7%95%D7%A6%D7%A8%D7%AA-%D7%91%D7%99%D7%AA/",
+    "image": "Kurtosh.jpg",
+    "imageType": "jpeg",
+    "summary": "Kurtosh Kolache, a traditional Hungarian pastry, is a delightful treat that everyone should try. One serving contains <b>400 calories</b>, <b>6g of protein</b>, and <b>15g of fat</b>. For <b>$2.50 per serving</b>, this recipe <b>covers 10%</b> of your daily requirements of vitamins and minerals. This recipe serves 4. A mixture of flour, sugar, yeast, and a handful of other ingredients are all it takes to make this delicious pastry. From preparation to the plate, this recipe takes approximately <b>120 minutes</b>. If you like this recipe, you might also enjoy other traditional Hungarian pastries.",
+    "cuisines": ["Hungarian"],
+    "dishTypes": ["dessert"],
+    "diets": ["vegan", "vegetarian"],
+    "occasions": ["special occasion"],
+    "instructions": "1. Prepare the dough and let it rise: In a mixer with a kneading hook, place the flour and mix in the yeast and baking powder (or baking powder substitute). Melt the butter and mix with cold milk to create a lukewarm mixture. Add the butter mixture to the flour along with the eggs, sugar, vanilla sugar, salt, and lemon zest. Process for 5 minutes at medium speed until you get a smooth and shiny dough that is slightly sticky. Spray with oil to prevent drying, cover with plastic wrap, and let rise until doubled in volume. 2. Wrap cardboard cylinders (or empty cans) with baking paper: Wrap the inner cardboard rolls of finished paper towels with baking paper (push the paper residues into the openings of the roll) - or attach pairs of drink cans, one on top of the other, wrap with aluminum foil to create a cylinder, and then wrap the resulting cylinder with baking paper. 3. Assemble and bake (without additional rising): Preheat the oven to medium-high heat (180-190°C). On a floured surface, cut the dough into 2 equal parts. If you want to make it without filling - create long “sausages” with your hands. If you want to fill with chocolate - roll out half of the dough into a rectangle 1/2 cm thick. Spread only 1/2 of the width with chocolate spread. Fold the other half over. Cut into 2 cm wide strips (most convenient with a pizza cutter). Wrap each dough “sausage” or filled dough strip around a baking paper-coated cardboard cylinder (leave slight gaps - they will fill when the dough rises). If needed, attach another strip by pinching. At the end of the wrapping, push the strip's end under the wrapped dough to seal. Roll the resulting dough cylinders on a floured surface to slightly flatten the strips. Repeat the process with the remaining dough and filling. 4. Prepare a flat plate with sugar. Brush each Kurtosh with oil and then roll in sugar. Place on a baking sheet lined with parchment paper. Bake immediately (without rising) for about 15 minutes until golden brown. Remove to cool and release from the paper roll.",
+    "analyzedInstructions": [
+        {
+            "name": "",
+            "steps": [
+                {
+                    "number": 1,
+                    "step": "Prepare the dough and let it rise: In a mixer with a kneading hook, place the flour and mix in the yeast and baking powder (or baking powder substitute). Melt the butter and mix with cold milk to create a lukewarm mixture. Add the butter mixture to the flour along with the eggs, sugar, vanilla sugar, salt, and lemon zest. Process for 5 minutes at medium speed until you get a smooth and shiny dough that is slightly sticky. Spray with oil to prevent drying, cover with plastic wrap, and let rise until doubled in volume.",
+                    "ingredients": [
+                        {
+                            "id": 20081,
+                            "name": "white flour",
+                            "localizedName": "white flour",
+                            "image": "flour.png"
+                        },
+                        {
+                            "id": 18375,
+                            "name": "yeast",
+                            "localizedName": "yeast",
+                            "image": "yeast-granules.jpg"
+                        },
+                        {
+                            "id": 18371,
+                            "name": "baking powder",
+                            "localizedName": "baking powder",
+                            "image": "baking-powder.jpg"
+                        },
+                        {
+                            "id": 1001,
+                            "name": "butter",
+                            "localizedName": "butter",
+                            "image": "butter-sliced.jpg"
+                        },
+                        {
+                            "id": 1077,
+                            "name": "milk",
+                            "localizedName": "milk",
+                            "image": "milk.png"
+                        },
+                        {
+                            "id": 1123,
+                            "name": "eggs",
+                            "localizedName": "eggs",
+                            "image": "egg.jpg"
+                        },
+                        {
+                            "id": 19335,
+                            "name": "white sugar",
+                            "localizedName": "white sugar",
+                            "image": "sugar-in-bowl.png"
+                        },
+                        {
+                            "id": 19350,
+                            "name": "vanilla sugar",
+                            "localizedName": "vanilla sugar",
+                            "image": "sugar.jpg"
+                        },
+                        {
+                            "id": 2047,
+                            "name": "fine salt",
+                            "localizedName": "fine salt",
+                            "image": "salt.jpg"
+                        },
+                        {
+                            "id": 9152,
+                            "name": "lemon zest",
+                            "localizedName": "lemon zest",
+                            "image": "lemon-zest.jpg"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404661,
+                            "name": "stand mixer",
+                            "localizedName": "stand mixer",
+                            "image": "stand-mixer.jpg"
+                        },
+                        {
+                            "id": 404783,
+                            "name": "bowl",
+                            "localizedName": "bowl",
+                            "image": "bowl.jpg"
+                        }
+                    ]
+                },
+                {
+                    "number": 2,
+                    "step": "Wrap cardboard cylinders (or empty cans) with baking paper: Wrap the inner cardboard rolls of finished paper towels with baking paper (push the paper residues into the openings of the roll) - or attach pairs of drink cans, one on top of the other, wrap with aluminum foil to create a cylinder, and then wrap the resulting cylinder with baking paper.",
+                    "ingredients": [],
+                    "equipment": [
+                        {
+                            "id": 404737,
+                            "name": "aluminum foil",
+                            "localizedName": "aluminum foil",
+                            "image": "aluminum-foil.png"
+                        },
+                        {
+                            "id": 404784,
+                            "name": "oven",
+                            "localizedName": "oven",
+                            "image": "oven.jpg"
+                        },
+                        {
+                            "id": 404891,
+                            "name": "parchment paper",
+                            "localizedName": "parchment paper",
+                            "image": "parchment-paper.jpg"
+                        }
+                    ]
+                },
+                {
+                    "number": 3,
+                    "step": "Assemble and bake (without additional rising): Preheat the oven to medium-high heat (180-190°C). On a floured surface, cut the dough into 2 equal parts. If you want to make it without filling - create long “sausages” with your hands. If you want to fill with chocolate - roll out half of the dough into a rectangle 1/2 cm thick. Spread only 1/2 of the width with chocolate spread. Fold the other half over. Cut into 2 cm wide strips (most convenient with a pizza cutter). Wrap each dough “sausage” or filled dough strip around a baking paper-coated cardboard cylinder (leave slight gaps - they will fill when the dough rises). If needed, attach another strip by pinching. At the end of the wrapping, push the strip's end under the wrapped dough to seal. Roll the resulting dough cylinders on a floured surface to slightly flatten the strips. Repeat the process with the remaining dough and filling.",
+                    "ingredients": [],
+                    "equipment": [
+                        {
+                            "id": 404727,
+                            "name": "rolling pin",
+                            "localizedName": "rolling pin",
+                            "image": "rolling-pin.jpg"
+                        },
+                        {
+                            "id": 404665,
+                            "name": "pizza cutter",
+                            "localizedName": "pizza cutter",
+                            "image": "pizza-cutter.jpg"
+                        }
+                    ]
+                },
+                {
+                    "number": 4,
+                    "step": "Prepare a flat plate with sugar. Brush each Kurtosh with oil and then roll in sugar. Place on a baking sheet lined with parchment paper. Bake immediately (without rising) for about 15 minutes until golden brown. Remove to cool and release from the paper roll.",
+                    "ingredients": [
+                        {
+                            "id": 19335,
+                            "name": "white sugar",
+                            "localizedName": "white sugar",
+                            "image": "sugar-in-bowl.png"
+                        }
+                    ],
+                    "equipment": [
+                        {
+                            "id": 404661,
+                            "name": "stand mixer",
+                            "localizedName": "stand mixer",
+                            "image": "stand-mixer.jpg"
+                        },
+                        {
+                            "id": 404727,
+                            "name": "rolling pin",
+                            "localizedName": "rolling pin",
+                            "image": "rolling-pin.jpg"
+                        },
+                        {
+                            "id": 404891,
+                            "name": "parchment paper",
+                            "localizedName": "parchment paper",
+                            "image": "parchment-paper.jpg"
+                        },
+                        {
+                            "id": 404783,
+                            "name": "bowl",
+                            "localizedName": "bowl",
+                            "image": "bowl.jpg"
+                        }
+                    ]
+                }
+            ]
+        }
+      ],
+      "originalId": null,
+      "spoonacularScore": 36.770774841308594
+    }

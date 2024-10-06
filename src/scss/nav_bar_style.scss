@@ -1,0 +1,127 @@
+#app {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #071945;
+  min-height: 100vh;
+  padding-top: 80px;
+}
+
+#nav {
+  position: fixed; 
+  top: 0; 
+  width: 100%; 
+  z-index: 1000;
+  height: 100px;
+  background-color: #e8eefd;
+  padding-left: 30px;
+  display: flex;
+  align-items: center; 
+}
+
+#nav a {
+  font-weight: bold;
+  color: #071945;
+  text-decoration: none;
+  padding: 10px 15px;
+  display: inline-block;
+  transition: all 0.3s ease;
+}
+
+#nav a.router-link-exact-active {
+  color: #154ad0;
+  font-size: 1.3em;
+}
+
+#nav a:hover {
+  font-weight: bold; 
+  color: #154ad0; 
+  background-color: transparent; 
+  font-size: 1.3em;
+  text-decoration: underline;
+}
+
+.welcomeText{
+  background-color: transparent; 
+  font-size: 1.5em;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropbtn {
+  background-color: transparent;
+  color: #2c3e50;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 230px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: #2c3e50;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: transparent;
+  font-weight: bold; 
+  color: #154ad0; 
+  font-size: 1.3em;
+  transition: all 0.3s ease;
+  text-decoration: underline;
+}
+
+.logoutBtn{
+  color: white;
+  background-color: #154ad0;
+  font-weight: bold;
+  margin-left: 5px;
+}
+
+.logoutBtn:hover {
+  font-size: 1.1em;
+  padding: 7px 15px; 
+}
+
+.createRecipeBtn{
+  // color: white;
+  // background-color: #154ad0;
+  // font-weight: bold;
+  // margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 10px;
+  background-color: #e8eefd;
+  border: 1px solid #103aa2;
+  border-radius: 4px;
+  padding: 6px 12px;
+  cursor: pointer;
+  color: #0c2974;
+  transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.createRecipeBtn:hover {
+  font-weight: bold;
+  background-color: #8ba9f3;
+}
+

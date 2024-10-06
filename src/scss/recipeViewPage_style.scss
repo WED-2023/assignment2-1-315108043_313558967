@@ -1,0 +1,82 @@
+.wrapper {
+    display: flex;
+  }
+  .wrapped {
+    width: 100%;
+    margin: 10px;
+  }
+  
+  .image_center {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 300px;
+  }
+  
+  .indicator-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  
+  .indicator {
+    width: 40px;
+    height: 40px;
+  }
+  
+  .recipe-header {
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
+  
+  .measureUnitSelect{
+    padding: 5px;
+  }
+
+  .FavoriteIcon{
+    margin-top: 10px;
+  }
+  
+  .changeServingsAmountDiv{
+    margin: 5px;
+  }
+  
+  .changeServingsAmount{
+    margin-right: 12px;
+    background-color: #e8eefd;
+    color: #2f64ea;
+    border-color: #2f64ea;
+    font-weight: bold; 
+    border-width: 2px;
+  }
+  
+  .prepareRecipeBtn{
+    background-color: #e8eefd;
+    border: 1px solid #103aa2;
+    padding: 5px 20px;
+    cursor: pointer;
+    width: 200px;
+    color: #0c2974;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+  }
+  
+  .prepareRecipeBtn:hover {
+    font-weight: bold;
+    background-color: #8ba9f3;
+  }
+
+  .preparation-images {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .preparation-image {
+    max-height: 150px; /* Adjust according to your design */
+    height: auto;
+  }
+  
